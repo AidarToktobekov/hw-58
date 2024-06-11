@@ -26,6 +26,7 @@ const Modal:React.FC<Props> = ({show, onClose, title, children})=>{
                     <div className="p-3">
                         {children}
                     </div>
+           
                 </div>
             </div>
         </div>
