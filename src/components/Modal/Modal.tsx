@@ -4,9 +4,10 @@ interface Props extends React.PropsWithChildren{
     show: boolean;
     onClose: MouseEventHandler;
     title: string;
+    buttons: {type: string, label: string, onClick: ()=>void}[];
 }
 
-const Modal:React.FC<Props> = ({show, onClose, title, children})=>{
+const Modal:React.FC<Props> = ({show, onClose, title, children, buttons})=>{
 
     return (
         <>
@@ -26,7 +27,15 @@ const Modal:React.FC<Props> = ({show, onClose, title, children})=>{
                     <div className="p-3">
                         {children}
                     </div>
-           
+                    <div className="d-flex gap-1 p-2">
+                        {buttons.map((button)=>{
+                            return(
+                                <button className={'btn btn-'+button.type} onClick={button.onClick}>
+                                    {button.label}
+                                </button>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
